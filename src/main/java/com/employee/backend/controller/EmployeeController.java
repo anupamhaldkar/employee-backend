@@ -36,4 +36,18 @@ public class EmployeeController {
         response.put("deleted", deleted);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping(value = "/employees/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
+       Employee employee = employeeService.getEmployeeById(id);
+        return ResponseEntity.ok(employee);
+    }
+
+    @PutMapping(value = "/employee/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id,
+                                                   @RequestBody Employee employee){
+        Employee updatedEmployee = employeeService.updateEmployee(id, employee);
+        return ResponseEntity.ok(updatedEmployee);
+
+    }
 }
