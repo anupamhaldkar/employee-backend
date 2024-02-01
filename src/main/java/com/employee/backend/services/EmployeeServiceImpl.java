@@ -37,4 +37,11 @@ public class EmployeeServiceImpl implements EmployeeService{
                         emp.getEmailId()))
                 .toList();
     }
+
+    @Override
+    public boolean deleteEmployee(Long id) {
+        EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
+        employeeRepository.delete(employeeEntity);
+        return true;
+    }
 }
